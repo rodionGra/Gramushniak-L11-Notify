@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">3.AcdHmwNotifyAndBroadcast</string>
+    <string name="open_new_activity">Open new activity with my info</string>
+    <string name="open_map">Open map</string>
+    <string name="log_button">Log button</string>
+    <string name="get_just_notification">Get just notification</string>
+    <string name="notification_with_button">Notification with button</string>
+    <string name="reply_label">Reply</string>
+    <string name="reply_action_title">Reply_action</string>
+    <string name="notification_with_button_reply">Notification with reply</string>
+    <string name="text_from_reply">Text from reply</string>
+    <string name="notification_with_progress_bar">Notification with progress bar</string>
+</resources>
