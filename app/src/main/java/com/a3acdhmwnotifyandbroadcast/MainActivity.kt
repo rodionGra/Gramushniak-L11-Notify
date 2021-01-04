@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(CLICK_BTN_TAG, "User tap on btn")
         }
     }
-
+    private val internetStateReceiver = InternetStateReceiver()
     private val notificationMsgReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
@@ -55,6 +56,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        setupReceivers()
+    }
+
+    private fun setupReceivers(){
+        registerReceiver(internetStateReceiver, IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"))
         registerReceiver(buttonClickReceiver, IntentFilter(BUTTON_ACTION))
         registerReceiver(notificationMsgReceiver, IntentFilter(NOTIFY_ACTION))
     }
@@ -69,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
         unregisterReceiver(buttonClickReceiver)
         unregisterReceiver(notificationMsgReceiver)
+        unregisterReceiver(internetStateReceiver)
     }
 
     private fun setupBinding() {

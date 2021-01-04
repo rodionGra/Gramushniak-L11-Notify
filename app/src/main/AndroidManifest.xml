@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.3AcdHmwNotifyAndBroadcast">
 
-        <receiver
+        <!--<receiver
             android:name=".InternetStateReceiver"
             android:enabled="true"
             android:exported="true">
@@ -22,7 +22,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"
                     tools:ignore="BatteryLife" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <activity android:name=".MyInfoActivity" />
         <activity android:name=".MainActivity">
