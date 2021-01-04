@@ -42,13 +42,14 @@ class MainActivity : AppCompatActivity() {
             binding.tvTextFromReply.text =
                 RemoteInput.getResultsFromIntent(intent)?.getCharSequence(KEY_TEXT_REPLY)
 
-            /*val repliedNotification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
+            val repliedNotification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentText("Send!!!")
-                .build()*/
+                .build()
 
-            /*NotificationManagerCompat.from(applicationContext)
-                .notify(3, repliedNotification)*/
+            createNotificationChannel()
+            NotificationManagerCompat.from(applicationContext)
+                .notify(3, repliedNotification)
         }
     }
 
@@ -166,6 +167,7 @@ class MainActivity : AppCompatActivity() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
         createNotificationChannel()
 
         NotificationManagerCompat.from(this).notify(2, builder.build())
@@ -204,6 +206,8 @@ class MainActivity : AppCompatActivity() {
                 .setAutoCancel(true)
                 .build()
 
+        createNotificationChannel()
+
         NotificationManagerCompat.from(applicationContext)
             .notify(3, notificationWithReply)
     }
@@ -226,7 +230,7 @@ class MainActivity : AppCompatActivity() {
             notify(4, builder.build())
 
             executor.execute{
-                for(it in 1..11) {
+                for(it in 1..10) {
                     progressCurrent += 10
                     builder.setProgress(100, progressCurrent, false)
                     builder.setContentText("Downloading... ${progressCurrent}%")
